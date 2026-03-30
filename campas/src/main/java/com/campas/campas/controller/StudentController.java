@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.campas.campas.dto.StudentDTO;
-import com.campas.campas.entity.student;
+import com.campas.campas.entity.Student;
 import com.campas.campas.service.StudentService;
 
 @RestController
@@ -27,14 +27,14 @@ public class StudentController {
 	
 	//GET ALL
 	@GetMapping
-	public List<student> getAllStudents(){
+	public List<Student> getAllStudents(){
 		return studentService.getAllStudents();
 	}
 	
 	//GET BY ID
 	@GetMapping("/{id}")
-	public ResponseEntity<student> getStudentById(@PathVariable Long id){
-		student Student = studentService.getStudentById(id);
+	public ResponseEntity<Student> getStudentById(@PathVariable Long id){
+		Student Student = studentService.getStudentById(id);
 		
 		if(Student != null) {
 			return ResponseEntity.ok(Student);
@@ -45,29 +45,29 @@ public class StudentController {
 	
 	//CREATE
 	@PostMapping
-	public ResponseEntity<student> createStudent(@RequestBody StudentDTO dto){
-		student Student = new student();
+	public ResponseEntity<Student> createStudent(@RequestBody StudentDTO dto){
+		Student Student = new Student();
 		Student.setName(dto.getName());
-		Student.setemail(dto.getEmail());
+		Student.setEmail(dto.getEmail());
 		
-		student savedStudent = studentService.saveStudent(Student);
+		Student savedStudent = studentService.saveStudent(Student);
 		return ResponseEntity.ok(savedStudent);
 	}
 	
 	//UPDATE
 	@PutMapping("/{id}")
-	public ResponseEntity<student> updateStuent(@PathVariable Long id,@RequestBody StudentDTO dto){
+	public ResponseEntity<Student> updateStuent(@PathVariable Long id,@RequestBody StudentDTO dto){
 		
-		student existing = studentService.getStudentById(id);
+		Student existing = studentService.getStudentById(id);
 		
 		if(existing == null) {
 			return ResponseEntity.notFound().build();
 		}
 		
 		existing.setName(dto.getName());
-		existing.setemail(dto.getEmail());
+		existing.setEmail(dto.getEmail());
 		
-		student updated = studentService.saveStudent(existing);
+		Student updated = studentService.saveStudent(existing);
 		return ResponseEntity.ok(updated);
 		
 	}
@@ -76,7 +76,7 @@ public class StudentController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteStudent(@PathVariable Long id){
 		
-		student existing = studentService.getStudentById(id);
+		Student existing = studentService.getStudentById(id);
 		
 		if(existing == null) {
 			return ResponseEntity.notFound().build();
@@ -88,8 +88,8 @@ public class StudentController {
 	
 	//SEARCH BY EMAIL(RequestParam)
 	@GetMapping("/search")
-	public ResponseEntity<student> getByEmail(@RequestParam String email){
-		student Student = studentService.getByEmail(email);
+	public ResponseEntity<Student> getByEmail(@RequestParam String email){
+		Student Student = studentService.getByEmail(email);
 		
 		if(Student == null) {
 			return ResponseEntity.notFound().build();
@@ -100,7 +100,7 @@ public class StudentController {
 	
 	//SEARCH BY NAME(Derived Query)
 	@GetMapping("/searchByName")
-	public List<student> searchByName(@RequestParam String keyword){
+	public List<Student> searchByName(@RequestParam String keyword){
 		return  studentService.searchByName(keyword);
 		
 	}

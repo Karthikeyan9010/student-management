@@ -1,16 +1,19 @@
 package com.campas.campas.entity;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name="students")
-public class student {
+public class Student {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String email;
+	
 	
 	public Long getId() {
 		return id;
@@ -28,11 +31,11 @@ public class student {
 		this.name=name;
 	}
 	
-	public String getemail() {
+	public String getEmail() {
 		return email;
 	}
 	
-	public void setemail(String email) {
+	public void setEmail(String email) {
 		this.email=email;
 	}
 	

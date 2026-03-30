@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Course List</title>
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body onload="loadCourses()">
+
+<h1>Course List</h1>
+
+<div class="top-bar">
+<button onclick="goToCourse()">+Add Course</button>
+<button class="back-btn" onclick="goHome()">Back</button>
+
+</div>
+
+<table>
+<thead>
+<tr>
+    <th>Course</th>
+    <th>Student</th>
+    <th>Action</th>
+</tr>
+</thead>
+<tbody id="courseTable"></tbody>
+
+</table>
+
+<script src="script.js"></script>
+
+</body>
+</html>

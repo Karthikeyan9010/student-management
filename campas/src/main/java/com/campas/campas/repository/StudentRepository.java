@@ -5,15 +5,15 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.campas.campas.entity.student;
+import com.campas.campas.entity.Student;
 
 @Repository
-public interface StudentRepository extends JpaRepository<student, Long>{
+public interface StudentRepository extends JpaRepository<Student, Long>{
 	
 	//Derived Query Method
-	student findByEmail(String email);
+	Student findByEmail(String email);
 	
 	//Derived Query Method with LIKE
-	List<student> findByNameContaining(String keyword);
+	List<Student> findByNameContaining(String keyword);
 
 }
